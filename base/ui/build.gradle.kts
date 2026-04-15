@@ -76,6 +76,8 @@ kotlin {
                 implementation(libs.backhandler)
                 //lottie
                 implementation(libs.compottie)
+                //qr
+                implementation(libs.qr.scanner)
                 //ui - liquid glass
                 api(libs.backdrop)
                 //utils

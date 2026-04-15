@@ -45,6 +45,7 @@ mokkeryPlugin =  "3.1.1"
 liquidGlass = "0.0.1-alpha02"
 orbit = "10.0.0"
 serialization = "1.10.0"
+qr = "0.7.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -117,6 +118,7 @@ orbit-core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit" }
 #serialization
 #serialization
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+qr-scanner = { module = "io.github.kalinjul.easyqrscan:scanner", version.ref = "qr"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
