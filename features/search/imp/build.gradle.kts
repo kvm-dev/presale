@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -31,7 +34,7 @@ kotlin {
     // A step-by-step guide on how to include this library in an XCode
     // project can be found here:
     // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcfName = "features:search:impKit"
+    val xcfName = "features-search-impKit"
 
     iosX64 {
         binaries.framework {
@@ -59,8 +62,37 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                //api
+                implementation(projects.features.search.api)
+                //base libs
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(libs.androidx.lifecycle.viewmodelCompose)
+                implementation(libs.androidx.lifecycle.runtimeCompose)
+                //encrypted storage
+                implementation(projects.base.storage)
+                //utils
+                implementation(projects.base.utils)
+                //ui
+                implementation(projects.base.ui)
+                //lottie
+                implementation(libs.compottie)
+                //viewmodel
+                implementation(projects.base.viewmodel)
+                //di
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.viewmodel)
+                //features
+                implementation(projects.features.authorization.api)
+                implementation(projects.features.networkconnection.api)
+                implementation(projects.features.profile.api)
+                implementation(libs.kotlin.stdlib)
             }
         }
 

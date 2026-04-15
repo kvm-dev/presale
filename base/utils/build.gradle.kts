@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
+    alias(libs.plugins.kotlinxSerialization)
+    kotlin("plugin.allopen") version "2.3.0"
 }
 
 kotlin {
@@ -31,7 +33,7 @@ kotlin {
     // A step-by-step guide on how to include this library in an XCode
     // project can be found here:
     // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcfName = "base:utilsKit"
+    val xcfName = "base-utilsKit"
 
     iosX64 {
         binaries.framework {
@@ -60,7 +62,10 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
+                //di
+                implementation(libs.koin.core)
+                //serialization
+                implementation(libs.kotlinx.serialization)
             }
         }
 
@@ -72,9 +77,9 @@ kotlin {
 
         androidMain {
             dependencies {
-                // Add Android-specific dependencies here. Note that this source set depends on
-                // commonMain by default and will correctly pull the Android artifacts of any KMP
-                // dependencies declared in commonMain.
+                //di
+                implementation(libs.koin.android)
+                implementation(libs.koin.compose)
             }
         }
 

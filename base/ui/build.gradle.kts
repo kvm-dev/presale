@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -31,7 +34,7 @@ kotlin {
     // A step-by-step guide on how to include this library in an XCode
     // project can be found here:
     // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcfName = "base:uiKit"
+    val xcfName = "base-uiKit"
 
     iosX64 {
         binaries.framework {
@@ -60,7 +63,23 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(libs.androidx.lifecycle.viewmodelCompose)
+                implementation(libs.androidx.lifecycle.runtimeCompose)
+                implementation(compose.components.resources)
+                //navigation for backHandler and backhandler
+                implementation(libs.navigation)
+                implementation(libs.backhandler)
+                //lottie
+                implementation(libs.compottie)
+                //ui - liquid glass
+                api(libs.backdrop)
+                //utils
+                implementation(projects.base.utils)
             }
         }
 
@@ -96,5 +115,10 @@ kotlin {
             }
         }
     }
+}
 
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "ru.presaler.base.ui.ComposeResources"
+    generateResClass = auto
 }

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -24,21 +25,46 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
+            implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            //di
+            implementation(libs.koin.android)
         }
         commonMain.dependencies {
-            implementation(libs.compose.runtime)
-            implementation(libs.compose.foundation)
-            implementation(libs.compose.material3)
-            implementation(libs.compose.ui)
-            implementation(libs.compose.components.resources)
-            implementation(libs.compose.uiToolingPreview)
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            //navigation
+            implementation(projects.base.navigation)
+            //asmode
+            implementation(projects.features.asmode.imp)
+            //screens
+            implementation(projects.features.splash.imp)
+            implementation(projects.features.main.imp)
+            implementation(projects.features.authorization.imp)
+            implementation(projects.features.profile.imp)
+            //features
+            //ui
+            implementation(projects.base.ui)
+            //di
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            //local encrypted storage and database
+            implementation(projects.base.storage)
+            //network
+            implementation(projects.base.network)
+            //utils
+            implementation(projects.base.utils)
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

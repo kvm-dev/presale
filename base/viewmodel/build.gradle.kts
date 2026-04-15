@@ -2,6 +2,10 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 kotlin {
@@ -31,7 +35,7 @@ kotlin {
     // A step-by-step guide on how to include this library in an XCode
     // project can be found here:
     // https://developer.android.com/kotlin/multiplatform/migrate
-    val xcfName = "base:viewmodelKit"
+    val xcfName = "base-viewmodelKit"
 
     iosX64 {
         binaries.framework {
@@ -60,7 +64,23 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(libs.kotlin.stdlib)
-                // Add KMP dependencies here
+                implementation(compose.runtime)
+                implementation(libs.androidx.lifecycle.viewmodelCompose)
+                implementation(libs.androidx.lifecycle.runtimeCompose)
+                //di
+                implementation(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.viewmodel)
+                implementation(projects.base.network)
+                //utils
+                implementation(projects.base.utils)
+                //features
+                implementation(projects.features.profile.api)
+                implementation(projects.features.tradepoint.api)
+                //mvi
+                api(libs.orbit.core)
+                api(libs.orbit.compose)
+                api(libs.orbit.viewModel)
             }
         }
 
