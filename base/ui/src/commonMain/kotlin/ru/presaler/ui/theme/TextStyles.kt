@@ -102,4 +102,28 @@ object TextStyles {
         color = SimplyWhite,
         textAlign = TextAlign.Start
     )
+    @Composable
+    fun apptitletext() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        color = SimplyWhite,
+        textAlign = TextAlign.Start
+    )
+    @Composable
+    fun splashdescription() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Medium,
+        fontSize = 16.sp,
+        color = SplashDescriptionLight,
+        textAlign = TextAlign.Center
+    )
+    @Composable
+    fun textConnection() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        color = SimplyWhite,
+        textAlign = TextAlign.Center
+    )
 }
