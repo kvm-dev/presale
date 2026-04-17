@@ -105,14 +105,13 @@ object TextStyles {
         color = SimplyWhite,
         textAlign = TextAlign.Start
     )
-<<<<<<< HEAD
+
     @Composable
     fun apptitletext() = TextStyle(
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
-=======
-
+    )
     @Composable
     fun srcGrayText() = TextStyle(
         fontFamily = getPresalerFontFamily(),
@@ -137,18 +136,17 @@ object TextStyles {
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Light,
         fontSize = 14.sp,
->>>>>>> 192af694f36cbf5ffeddc413b244d8881e9eccd1
         color = SimplyWhite,
         textAlign = TextAlign.Start
     )
+
     @Composable
-<<<<<<< HEAD
-    fun splashdescription() = TextStyle(
-        fontFamily = getPresalerFontFamily(),
-        fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
-        color = SplashDescriptionLight,
-        textAlign = TextAlign.Center
+    fun splashDescription() = TextStyle(
+    fontFamily = getPresalerFontFamily(),
+    fontWeight = FontWeight.Medium,
+    fontSize = 16.sp,
+    color = SplashDescriptionLight,
+    textAlign = TextAlign.Center
     )
     @Composable
     fun textConnection() = TextStyle(
@@ -157,7 +155,9 @@ object TextStyles {
         fontSize = 14.sp,
         color = SimplyWhite,
         textAlign = TextAlign.Center
-=======
+    )
+
+    @Composable
     fun offersText() = TextStyle(
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Light,
@@ -182,6 +182,5 @@ object TextStyles {
         fontSize = 18.sp,
         color = SimplyBlack,
         textAlign = TextAlign.Start
->>>>>>> 192af694f36cbf5ffeddc413b244d8881e9eccd1
     )
 }

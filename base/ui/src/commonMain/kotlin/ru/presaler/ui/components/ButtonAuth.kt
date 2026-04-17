@@ -1,7 +1,5 @@
 package ru.presaler.ui.components
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -15,7 +13,7 @@ import ru.presaler.ui.theme.TextStyles.bottomSheetButtonBlackStyle
 
 
 @Composable
-fun splashButtonAut(onClick: () -> Unit, modifier: Modifier) {
+fun ButtonAuth(onClick: () -> Unit, modifier: Modifier) {
         val colors = ButtonDefaults.buttonColors(
                 containerColor = MainYellowLight,
             )
