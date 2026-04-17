@@ -78,6 +78,7 @@ kotlin {
                 implementation(libs.compottie)
                 //qr
                 implementation(libs.qr.scanner)
+                implementation(libs.qr.kit.generator)
                 //ui - liquid glass
                 api(libs.backdrop)
                 //utils
