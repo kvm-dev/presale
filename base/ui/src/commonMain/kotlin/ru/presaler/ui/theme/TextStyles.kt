@@ -1,11 +1,14 @@
 package ru.presaler.ui.theme
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontStyle.Companion.Italic
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import ru.presaler.ui.theme.SimplyWhite
 
 object TextStyles {
     @Composable
@@ -102,15 +105,44 @@ object TextStyles {
         color = SimplyWhite,
         textAlign = TextAlign.Start
     )
+<<<<<<< HEAD
     @Composable
     fun apptitletext() = TextStyle(
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
+=======
+
+    @Composable
+    fun srcGrayText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp,
+        color = Color.LightGray,
+        textAlign = TextAlign.Start
+    )
+
+    @Composable
+    fun srcWhiteText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp,
+        color = SimplyWhite,
+        textAlign = TextAlign.Start,
+        fontStyle = Italic,
+    )
+
+    @Composable
+    fun addressText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Light,
+        fontSize = 14.sp,
+>>>>>>> 192af694f36cbf5ffeddc413b244d8881e9eccd1
         color = SimplyWhite,
         textAlign = TextAlign.Start
     )
     @Composable
+<<<<<<< HEAD
     fun splashdescription() = TextStyle(
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Medium,
@@ -125,5 +157,31 @@ object TextStyles {
         fontSize = 14.sp,
         color = SimplyWhite,
         textAlign = TextAlign.Center
+=======
+    fun offersText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Light,
+        fontSize = 22.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Start
+    )
+
+    @Composable
+    fun companyText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp,
+        color = OfferYellow,
+        textAlign = TextAlign.Start
+    )
+
+    @Composable
+    fun saleText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Start
+>>>>>>> 192af694f36cbf5ffeddc413b244d8881e9eccd1
     )
 }
