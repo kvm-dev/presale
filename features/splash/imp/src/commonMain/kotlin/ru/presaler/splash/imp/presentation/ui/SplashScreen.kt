@@ -1,14 +1,16 @@
 package ru.presaler.splash.imp.presentation.ui
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import io.github.alexzhirkevich.compottie.Compottie
 import io.github.alexzhirkevich.compottie.LottieCompositionSpec
 import io.github.alexzhirkevich.compottie.rememberLottieComposition
@@ -18,6 +20,9 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import ru.presaler.features.splash.imp.ComposeResources.Res
 import ru.presaler.splash.imp.presentation.viewmodel.SplashScreenViewModel
+import ru.presaler.ui.components.AppTitle
+import ru.presaler.ui.components.ButtonAuth
+import ru.presaler.ui.components.SplashDescription
 
 @Composable
 fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateToHome: () -> Unit, onNavigationAuthorization: () -> Unit) {
@@ -44,11 +49,14 @@ fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateT
             }
             Column(
                 modifier = Modifier
-                    .fillMaxHeight()
-            ) {
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally)
+            {
                 Spacer(modifier = Modifier.weight(1f))
+
                 Image(
                     modifier = Modifier
+                        .padding(top = 48.dp)
                         .fillMaxWidth(),
                     contentScale = ContentScale.FillWidth,
                     painter = rememberLottiePainter(
@@ -56,6 +64,13 @@ fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateT
                         iterations = Compottie.IterateForever),
                     contentDescription = ""
                 )
+
+                AppTitle()
+                SplashDescription()
+
+                Spacer(modifier = Modifier.weight(1f))
+                //ConnectionStatus() //Проверка статуса
+                ButtonAuth(modifier = Modifier, onClick = {})
             }
         }
     }

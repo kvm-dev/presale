@@ -30,6 +30,7 @@ val UnselectedBorderChipColor = Color(0xFFD4CFCF)
 val SimplyBlack = Color(0xFF000000)
 val Turquoise = Color(83, 170, 172)
 val MainYellowLight = Color(0xffffd700)
+val OfferYellow = Color(0xfffFFBF00)
 val MainOrangeLight = Color(0xFFFC8E20)
 val MainPinkLight = Color(0xFFB62564)
 val MainMenuBackgroundLight = Color(red = 241, green = 154, blue = 37)
@@ -50,3 +51,5 @@ val AchievementBackground = Color(red = 14, green = 193, blue = 169, alpha = 26)
 val MainSubNavigationBackground = Color(red = 255, green = 255, blue = 255, alpha = 12)
 
 val MainBackgroundLight = Color(0xff99e6b3)
+
+val SplashDescriptionLight = Color(0xFFEED6D6)
