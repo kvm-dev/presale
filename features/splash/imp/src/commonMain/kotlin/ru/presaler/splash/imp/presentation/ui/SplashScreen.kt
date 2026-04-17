@@ -69,7 +69,6 @@ fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateT
                 AppTitle()
                 SplashDescription()
 
-                println("тут")
                 Spacer(modifier = Modifier.weight(1f))
                 //ConnectionStatus() //Проверка статуса
                 ButtonAuth(modifier = Modifier, onClick = {})
