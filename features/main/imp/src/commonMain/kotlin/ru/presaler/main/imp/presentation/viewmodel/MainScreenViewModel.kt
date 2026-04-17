@@ -21,7 +21,12 @@ class MainScreenViewModel(private val interactor: MainScreenInteractor) : BaseVi
 
     fun initViewModel() = orbitIntent {
         val job = scope.launch(Dispatchers.IO + coroutineExceptionHandler) {
-            reduce { MainScreenViewState.LoadingState }
+            reduce { MainScreenViewState.SuccessState(
+                isNetworkAvailable = true,
+                isAsModeEnabled = true,
+                userName = "kerim",
+                currentAddress = "street"
+            ) }
 
         }
         if(!job.isActive) job.join()
