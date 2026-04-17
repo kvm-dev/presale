@@ -49,7 +49,6 @@ fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateT
             }
             Column(
                 modifier = Modifier
-
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally)
             {
