@@ -1,0 +1,72 @@
+CREATE TABLE TraderProfile (
+    userId INTEGER NOT NULL,
+    userName TEXT NOT NULL,
+    userType TEXT NOT NULL,
+    userStatus INTEGER NOT NULL,
+    userEmail TEXT NOT NULL,
+    userPhone TEXT NOT NULL,
+    userRole INTEGER NOT NULL,
+    userInn TEXT NOT NULL,
+    userOgrn TEXT NOT NULL,
+    userFactAddress TEXT NOT NULL,
+    userKpp TEXT NOT NULL,
+    userLegalAddress TEXT NOT NULL,
+    PRIMARY KEY (userId)
+);
+
+CREATE TABLE TradePointAddress (
+    uId INTEGER NOT NULL,
+    address TEXT NOT NULL,
+    isActive INTEGER DEFAULT 0 NOT NULL,
+    userId INTEGER NOT NULL,
+    PRIMARY KEY (uId)
+);
+
+
+insertTraderProfile:
+INSERT INTO TraderProfile(userId, userName, userType, userStatus, userEmail, userPhone, userRole, userInn, userOgrn, userFactAddress, userKpp, userLegalAddress)
+VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectTraderProfile:
+SELECT TraderProfile.*
+FROM TraderProfile;
+
+clearAllTraderProfiles:
+DELETE FROM TraderProfile;
+
+updateTraderUserName:
+UPDATE TraderProfile
+SET userName = :userName
+WHERE userId IS :userId;
+
+updateTraderUserType:
+UPDATE TraderProfile
+SET userType = :userType
+WHERE userId IS :userId;
+
+updateTraderUserStatus:
+UPDATE TraderProfile
+SET userStatus = :userStatus
+WHERE userId IS :userId;
+
+updateTraderUserEmail:
+UPDATE TraderProfile
+SET userEmail = :userEmail
+WHERE userId IS :userId;
+
+updateTraderUserPhone:
+UPDATE TraderProfile
+SET userPhone = :userPhone
+WHERE userId IS :userId;
+
+insertTradePointAddress:
+INSERT INTO TradePointAddress(uId, address, isActive, userId)
+VALUES(?, ?, ?, ?);
+
+selectTradePointAddress:
+SELECT TradePointAddress.*
+FROM TradePointAddress;
+
+clearAllTraderPointAddress:
+DELETE FROM TradePointAddress;
+

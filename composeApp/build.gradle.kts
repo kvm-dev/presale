@@ -12,7 +12,7 @@ plugins {
 kotlin {
     androidTarget {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_21)
         }
     }
     
@@ -51,19 +51,21 @@ kotlin {
             implementation(projects.features.main.imp)
             implementation(projects.features.authorization.imp)
             implementation(projects.features.profile.imp)
-            //features
-            //ui
-            implementation(projects.base.ui)
-            //di
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
-            implementation(libs.koin.compose.viewmodel)
             //local encrypted storage and database
             implementation(projects.base.storage)
             //network
             implementation(projects.base.network)
             //utils
             implementation(projects.base.utils)
+            //ui
+            implementation(projects.base.ui)
+            //di
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            //features
+            implementation(projects.features.networkconnection.imp)
+
 
         }
         commonTest.dependencies {
@@ -94,8 +96,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }
 

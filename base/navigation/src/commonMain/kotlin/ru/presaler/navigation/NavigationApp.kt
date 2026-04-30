@@ -166,7 +166,7 @@ fun NavigationApp() {
     ) { innerPadding ->
         NavHost(modifier = modifier,
             navController = navController,
-            startDestination = AppDestinations.Main
+            startDestination = AppDestinations.Splash
         ){
             // Определяем маршруты и их Composable-функции
             composable<AppDestinations.Main> {

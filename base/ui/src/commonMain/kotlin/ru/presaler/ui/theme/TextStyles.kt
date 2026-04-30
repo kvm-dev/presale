@@ -1,6 +1,7 @@
 package ru.presaler.ui.theme
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -112,6 +113,7 @@ object TextStyles {
         fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
     )
+
     @Composable
     fun srcGrayText() = TextStyle(
         fontFamily = getPresalerFontFamily(),
@@ -193,6 +195,7 @@ object TextStyles {
     )
 
     @Composable
+
     fun tradesPointMainText() = TextStyle(
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Bold,
@@ -200,4 +203,97 @@ object TextStyles {
         color = SimplyBlack,
         textAlign = TextAlign.Center
     )
+    @Composable
+    fun searchCompanyText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Light,
+        fontSize = 14.sp,
+        color = SimplyWhite,
+        textAlign = TextAlign.Start
+    )
+    @Composable
+    fun searchText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp,
+        color = SimplyBlack,
+        fontStyle = Italic,
+        textAlign = TextAlign.Start
+    )
+    @Composable
+    fun yellowPriceText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 22.sp,
+        color = OfferYellow,
+        fontStyle = Italic,
+        textAlign = TextAlign.Start
+    )
+    @Composable
+    fun greenPriceText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 22.sp,
+        color = MainGreenLight,
+        fontStyle = Italic,
+        textAlign = TextAlign.Start
+    )
+
+    @Composable
+    fun inCartText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.ExtraBold,
+        fontSize = 16.sp,
+        color = SimplyWhite,
+        textAlign = TextAlign.Center
+    )
+
+    @Composable
+    fun switchButtonText(isSelected: Boolean) = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+        fontSize = 18.sp,
+        color = if (isSelected) MainPinkLight else Color.LightGray,
+        textAlign = TextAlign.Center
+    )
+
+    @Composable
+    fun blackCountText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Black,
+        fontSize = 24.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Center,
+        fontStyle = Italic
+    )
+
+    @Composable
+    fun artikulText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Center,
+        fontStyle = Italic
+    )
+
+    @Composable
+    fun inArtikulText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Center
+    )
+
+    @Composable
+    fun itemText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Black,
+        fontSize = 14.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Start,
+        fontStyle = Italic
+    )
+
 }

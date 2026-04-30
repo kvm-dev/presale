@@ -1,6 +1,8 @@
 package ru.presaler.splash.imp.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.zip
@@ -20,7 +22,9 @@ class SplashScreenViewModel(private val interactor: SplashScreenInteractor) : Ba
 
 
     private fun loadData() = orbitIntent {
-        scope.launch {
+        scope.launch(Dispatchers.IO) {
+           val result =  interactor.isNetworkAvailable()
+            println("результат $result")
             reduce {
                 SplashScreenViewState.Loading
             }
