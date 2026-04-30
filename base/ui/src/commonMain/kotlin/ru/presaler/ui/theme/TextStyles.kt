@@ -179,8 +179,25 @@ object TextStyles {
     fun saleText() = TextStyle(
         fontFamily = getPresalerFontFamily(),
         fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Start
+    )
+    @Composable
+    fun serviceTitleStyle1() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
         color = SimplyBlack,
         textAlign = TextAlign.Start
+    )
+
+    @Composable
+    fun tradesPointMainText() = TextStyle(
+        fontFamily = getPresalerFontFamily(),
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp,
+        color = SimplyBlack,
+        textAlign = TextAlign.Center
     )
 }

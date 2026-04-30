@@ -52,4 +52,6 @@ val MainSubNavigationBackground = Color(red = 255, green = 255, blue = 255, alph
 
 val MainBackgroundLight = Color(0xff99e6b3)
 
+val TradeCardBackground = Color(0xFAF38D5D)
+
 val SplashDescriptionLight = Color(0xFFEED6D6)

@@ -50,12 +50,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.datetime.format.Padding
 import org.jetbrains.compose.resources.imageResource
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import ru.presaler.main.imp.presentation.viewmodel.MainScreenViewModel
+import ru.presaler.ui.components.TextInput
+import ru.presaler.ui.components.authorizationError2
+import ru.presaler.ui.components.text
+import ru.presaler.ui.components.tradePointScreen
+import ru.presaler.ui.components.tradePointsCard
+import ru.presaler.ui.components.trancparentButton
+import ru.presaler.ui.components.userTypeLegal
 import ru.presaler.ui.icons.AppIcon
 import ru.presaler.ui.icons.OrdersIcon
 import ru.presaler.ui.icons.TraderPointIcon
@@ -72,7 +80,7 @@ import ru.presaler.utils.navigationScreens.AppDestinations
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun MainScreen(viewModel: MainScreenViewModel = koinViewModel(), onNavigationAuthorization: ()->Unit, onclickSearch: ()->Unit, navController: NavController, saleDestination: AppDestinations.SaleInner) {
+fun MainScreen(innerPadding: PaddingValues, viewModel: MainScreenViewModel = koinViewModel(), onNavigationAuthorization: ()->Unit, onclickSearch: ()->Unit, navController: NavController, saleDestination: AppDestinations.SaleInner) {
 
     val state by viewModel.collectAsState()
 
@@ -148,138 +156,142 @@ fun MainScreen(viewModel: MainScreenViewModel = koinViewModel(), onNavigationAut
 //          isRefreshing = false
 //          val isShowAchievementDialog  = remember { mutableStateOf(false) }
 //          val selectedAchievement  = remember { mutableIntStateOf(0) }
-            Box(
-                modifier = Modifier
-            ){
-                Box(
-                    modifier = Modifier
-                        .padding(top = 50.dp, start = 6.dp)
-                ){
-                    Icon(
-                        imageVector = AppIcon,
-                        contentDescription = "AppIcon",
-                        tint = Color.Unspecified,
-                        modifier = Modifier.size(75.dp),
-                    )
-                    Text(
-                        text = "Заказчик:",
-                        style = srcGrayText(),
-                        modifier = Modifier
-                            .padding(start = 75.dp, top = 10.dp)
-                    )
-                    Text(
-                        text = "Пупкина Анна Михайловна",
-                        style = srcWhiteText(),
-                        modifier = Modifier
-                            .padding(start = 75.dp, top = 32.dp)
-                    )
-                }
-                Box(
-                    modifier = Modifier
-                        .padding(top = 120.dp, start = 8.dp)
-                        .width(width = 350.dp)
-                ){
-                    Icon(
-                        imageVector = TraderPointIcon,
-                        contentDescription = "TraderPointIcon",
-                        tint = Color.Unspecified,
-                        modifier = Modifier.size(65.dp),
-                    )
-                    Text(
-                        text = "г. Симферополь, ул. Пушкина, д. Колотушкина",
-                        style = addressText(),
-                        modifier = Modifier
-                            .padding(start = 80.dp, top = 15.dp)
-                    )
-                }
-                val keyword = remember { mutableStateOf("") }
-                Box(
-                    modifier = Modifier
-                        .padding(top = 190.dp, start = 18.dp, end = 18.dp),
-                ) {
-                    TextField(
-                        value = keyword.value,
-                        onValueChange = { keyword.value = it },
-                        leadingIcon = { },
-                        trailingIcon =  {
-                            IconButton(onClick = { keyword.value = "" }) {
-                                Icon(
-                                    imageVector = AppIcon,
-                                    contentDescription = "Clear"
-                                )
-                            }
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(55.dp),
-                        textStyle = TextStyle(color = Color.Black, fontSize = 16.sp),
-                        placeholder = { Text("Поиск товаров и категорий", color = Color.LightGray, fontSize = 16.sp)},
-                        shape = RoundedCornerShape(13.dp),
-                        singleLine = true,
-                        colors = TextFieldDefaults.colors(
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            errorIndicatorColor = Color.Transparent,
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White
-                        )
-                    )
-                }
-                Box(
-                    modifier = Modifier
-                        .padding(top = 250.dp, start = 8.dp)
-                ){
-                    Text(
-                        text = "Акции и скидки у поставщиков",
-                        style = offersText(),
-                        modifier = Modifier
-                            .padding(start = 18.dp, top = 15.dp)
-                    )
-                }
-                Box(
-                    modifier = Modifier
-                        .padding(top = 300.dp, start = 8.dp)
-                ){
-                    LazyRow(
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        contentPadding = PaddingValues(horizontal = 16.dp),
-                    ) {
-                        items(20) { item ->
-                            Card(
-                                modifier = Modifier
-                                    .width(300.dp)
-                                    .height(270.dp),
-                                colors = CardDefaults.cardColors(
-                                    containerColor = Color.Black.copy(alpha = 0f)),
-                                shape = RoundedCornerShape(16.dp)
-                            ) {
-                                Column () {
-                                        Image(imageVector = AppIcon,
-                                            contentDescription = "",
-                                            contentScale = ContentScale.Crop ,
-                                            modifier = Modifier
-                                                .height(180.dp)
-                                                .clip(RoundedCornerShape(16.dp))
-                                            )
-                                        Text(
-                                            text="ООО ''Простоквашино''",
-                                            style = companyText(),
-                                            modifier = Modifier
-                                                .padding(top=10.dp)
-                                        )
-                                        Text(
-                                            text="Скидка на молочную продукцию до 15%",
-                                            style = saleText(),
-                                            modifier = Modifier
-                                                .padding(top=10.dp)
-                                        )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+
+            //--------------------------------------------------Business
+
+
+            authorizationError2()
+
+                //--------------------------------------------------=-
+//                Box(
+//                    modifier = Modifier
+//                        .padding(top = 50.dp, start = 6.dp)
+//                ){
+//                    Icon(
+//                        imageVector = AppIcon,
+//                        contentDescription = "AppIcon",
+//                        tint = Color.Unspecified,
+//                        modifier = Modifier.size(75.dp),
+//                    )
+//                    Text(
+//                        text = "Заказчик:",
+//                        style = srcGrayText(),
+//                        modifier = Modifier
+//                            .padding(start = 75.dp, top = 10.dp)
+//                    )
+//                    Text(
+//                        text = "Пупкина Анна Михайловна",
+//                        style = srcWhiteText(),
+//                        modifier = Modifier
+//                            .padding(start = 75.dp, top = 32.dp)
+//                    )
+//                }
+//                Box(
+//                    modifier = Modifier
+//                        .padding(top = 120.dp, start = 8.dp)
+//                        .width(width = 350.dp)
+//                ){
+//                    Icon(
+//                        imageVector = TraderPointIcon,
+//                        contentDescription = "TraderPointIcon",
+//                        tint = Color.Unspecified,
+//                        modifier = Modifier.size(65.dp),
+//                    )
+//                    Text(
+//                        text = "г. Симферополь, ул. Пушкина, д. Колотушкина",
+//                        style = addressText(),
+//                        modifier = Modifier
+//                            .padding(start = 80.dp, top = 15.dp)
+//                    )
+//                }
+//                val keyword = remember { mutableStateOf("") }
+//                Box(
+//                    modifier = Modifier
+//                        .padding(top = 190.dp, start = 18.dp, end = 18.dp),
+//                ) {
+//                    TextField(
+//                        value = keyword.value,
+//                        onValueChange = { keyword.value = it },
+//                        leadingIcon = { },
+//                        trailingIcon =  {
+//                            IconButton(onClick = { keyword.value = "" }) {
+//                                Icon(
+//                                    imageVector = AppIcon,
+//                                    contentDescription = "Clear"
+//                                )
+//                            }
+//                        },
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .height(55.dp),
+//                        textStyle = TextStyle(color = Color.Black, fontSize = 16.sp),
+//                        placeholder = { Text("Поиск товаров и категорий", color = Color.LightGray, fontSize = 16.sp)},
+//                        shape = RoundedCornerShape(13.dp),
+//                        singleLine = true,
+//                        colors = TextFieldDefaults.colors(
+//                            focusedIndicatorColor = Color.Transparent,
+//                            unfocusedIndicatorColor = Color.Transparent,
+//                            errorIndicatorColor = Color.Transparent,
+//                            focusedContainerColor = Color.White,
+//                            unfocusedContainerColor = Color.White
+//                        )
+//                    )
+//                }
+//                Box(
+//                    modifier = Modifier
+//                        .padding(top = 250.dp, start = 8.dp)
+//                ){
+//                    Text(
+//                        text = "Акции и скидки у поставщиков",
+//                        style = offersText(),
+//                        modifier = Modifier
+//                            .padding(start = 18.dp, top = 15.dp)
+//                    )
+//                }
+//                Box(
+//                    modifier = Modifier
+//                        .padding(top = 300.dp, start = 8.dp)
+//                ){
+//                    LazyRow(
+//                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+//                        contentPadding = PaddingValues(horizontal = 16.dp),
+//                    ) {
+//                        items(20) { item ->
+//                            Card(
+//                                modifier = Modifier
+//                                    .width(300.dp)
+//                                    .height(270.dp),
+//                                colors = CardDefaults.cardColors(
+//                                    containerColor = Color.Black.copy(alpha = 0f)),
+//                                shape = RoundedCornerShape(16.dp)
+//                            ) {
+//                                Column () {
+//                                        Image(imageVector = AppIcon,
+//                                            contentDescription = "",
+//                                            contentScale = ContentScale.Crop ,
+//                                            modifier = Modifier
+//                                                .height(180.dp)
+//                                                .clip(RoundedCornerShape(16.dp))
+//                                            )
+//                                        Text(
+//                                            text="ООО ''Простоквашино''",
+//                                            style = companyText(),
+//                                            modifier = Modifier
+//                                                .padding(top=10.dp)
+//                                        )
+//                                        Text(
+//                                            text="Скидка на молочную продукцию до 15%",
+//                                            style = saleText(),
+//                                            modifier = Modifier
+//                                                .padding(top=10.dp)
+//                                        )
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+          }
+     }
     }
-}
+
 

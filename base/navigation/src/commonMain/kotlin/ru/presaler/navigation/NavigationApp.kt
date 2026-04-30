@@ -171,6 +171,7 @@ fun NavigationApp() {
             // Определяем маршруты и их Composable-функции
             composable<AppDestinations.Main> {
                 MainScreen(
+                    innerPadding = innerPadding,
                     onNavigationAuthorization = {
                         navController.navigate(route = AppDestinations.Authorization)
                         { popUpTo(AppDestinations.Splash){
