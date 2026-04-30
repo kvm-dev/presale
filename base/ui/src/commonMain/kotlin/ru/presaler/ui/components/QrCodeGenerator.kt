@@ -21,12 +21,6 @@ import qrgenerator.qrkitpainter.createRoundCorners
 import qrgenerator.qrkitpainter.rememberQrKitPainter
 import qrgenerator.qrkitpainter.solidBrush
 import ru.presaler.ui.icons.AppIcon
-<<<<<<< HEAD
-=======
-import ru.presaler.ui.theme.MainBlackLight
-import ru.presaler.ui.theme.MainOrangeLight
-import ru.presaler.ui.theme.MainPinkLight
->>>>>>> e8eed203e19abed6cec9fc1f4e5e7d77e6c2a613
 import ru.presaler.ui.theme.SimplyBlack
 import ru.presaler.ui.theme.SimplyWhite
 

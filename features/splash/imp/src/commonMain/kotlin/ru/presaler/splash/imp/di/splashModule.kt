@@ -6,6 +6,6 @@ import ru.presaler.splash.imp.domain.interactor.SplashScreenInteractor
 import ru.presaler.splash.imp.presentation.viewmodel.SplashScreenViewModel
 
 val splashModule = module {
-    single<SplashScreenInteractor> { SplashScreenInteractor() }
+    single<SplashScreenInteractor> { SplashScreenInteractor(networkStateUseCase = get()) }
     viewModelOf(::SplashScreenViewModel)
 }
