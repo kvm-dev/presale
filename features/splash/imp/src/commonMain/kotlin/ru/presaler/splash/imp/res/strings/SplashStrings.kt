@@ -4,9 +4,11 @@ fun getSplashTitle() = "Пресейлер"
 
 fun getSplashDescription() = "Заказывай товары у своих поставщиков прямо в мобильном приложении"
 
-fun getSplashCheckConnectioNText() = "Проверка соединения..."
+fun getSplashCheckConnectionText() = "Проверка соединения..."
 
 fun getSplashAuthorizationButtonText() = "Авторизация..."
+
+fun getErrorConnection() = "Отсутствует интернет\nПроверьте соединение..."
 
 fun getSplashRegistrationButtonText() = "Регистрация бизнеса"
 

@@ -59,6 +59,10 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
+                //api
+                implementation(projects.features.profile.api)
+                //storage
+                implementation(projects.base.storage)
                 implementation(libs.kotlin.stdlib)
                 // Add KMP dependencies here
             }

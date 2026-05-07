@@ -5,14 +5,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.presaler.ui.res.getSplashDescription
 import ru.presaler.ui.theme.TextStyles.textConnection
 
 @Composable
-fun SplashDescription() {
+fun SplashDescriptionText(text: String) {
     Text(modifier = Modifier
         .padding(26.dp),
         style = textConnection(),
-        text = getSplashDescription(),
+        text = text,
     )
 }

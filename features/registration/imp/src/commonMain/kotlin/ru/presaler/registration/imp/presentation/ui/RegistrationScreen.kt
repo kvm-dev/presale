@@ -23,7 +23,7 @@ import presaler.features.registration.imp.generated.resources.Res.readBytes
 import ru.presaler.registration.imp.presentation.viewmodel.RegistrationScreenViewModel
 import ru.presaler.ui.components.AppTitle
 import ru.presaler.ui.components.ButtonAuth
-import ru.presaler.ui.components.SplashDescription
+import ru.presaler.ui.components.SplashDescriptionText
 
 @Composable
 fun RegistrationScreen(viewModel: RegistrationScreenViewModel = koinViewModel(), onNavigateToHome: () -> Unit, onNavigationAuthorization: () -> Unit) {
@@ -67,7 +67,7 @@ fun RegistrationScreen(viewModel: RegistrationScreenViewModel = koinViewModel(),
                 )
 
                 AppTitle()
-                SplashDescription()
+                SplashDescriptionText()
 
                 Spacer(modifier = Modifier.weight(1f))
                 //ConnectionStatus() //Проверка статуса

@@ -11,11 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ru.presaler.ui.icons.AppIcon
-import ru.presaler.ui.res.SplashStrings.getAppTitle
 import ru.presaler.ui.theme.TextStyles.apptitletext
 
 @Composable
-fun AppTitle(){
+fun AppTitle(text: String){
     Row(modifier = Modifier
         .padding(horizontal = 16.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -28,7 +27,7 @@ fun AppTitle(){
                 .size(90.dp))
         Text(
             style = apptitletext(),
-            text = getAppTitle(),
+            text = text,
             modifier = Modifier
                 .padding(end = 22.dp)
                 )

@@ -22,11 +22,30 @@ class SplashScreenViewModel(private val interactor: SplashScreenInteractor) : Ba
 
 
     private fun loadData() = orbitIntent {
+        reduce {
+            SplashScreenViewState.Loading
+        }
         scope.launch(Dispatchers.IO) {
-           val result =  interactor.isNetworkAvailable()
-            println("результат $result")
-            reduce {
-                SplashScreenViewState.Loading
+           val isConnectionAvailable =  interactor.isNetworkAvailable()
+            if(isConnectionAvailable) {
+                interactor.useToken.collect { userToken->
+                    if(userToken.isNotEmpty()){
+                       //authorization
+                        postSideEffect(
+                            SplashScreenSideEffects.NAVIGATE_TO_AUTHORIZED_ZONE
+                        )
+                    }
+                    else{
+                        reduce {
+                            SplashScreenViewState.Unauthorized
+                        }
+                    }
+                }
+            }
+            else{
+                reduce {
+                    SplashScreenViewState.ConnectionNotFound
+                }
             }
         }
     }

@@ -21,9 +21,6 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import presaler.features.search.imp.generated.resources.Res
 import ru.presaler.search.imp.presentation.viewmodel.SearchScreenViewModel
-import ru.presaler.ui.components.AppTitle
-import ru.presaler.ui.components.ButtonAuth
-import ru.presaler.ui.components.SplashDescription
 
 @Composable
 fun SearchScreen(viewModel: SearchScreenViewModel = koinViewModel(), onNavigateToHome: () -> Unit, onNavigationAuthorization: () -> Unit) {
@@ -66,12 +63,7 @@ fun SearchScreen(viewModel: SearchScreenViewModel = koinViewModel(), onNavigateT
                     contentDescription = ""
                 )
 
-                AppTitle()
-                SplashDescription()
 
-                Spacer(modifier = Modifier.weight(1f))
-                //ConnectionStatus() //Проверка статуса
-                ButtonAuth(modifier = Modifier, onClick = {})
             }
         }
     }

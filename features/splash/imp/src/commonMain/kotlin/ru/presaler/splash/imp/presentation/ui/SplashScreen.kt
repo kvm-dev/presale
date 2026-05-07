@@ -20,14 +20,27 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import ru.presaler.features.splash.imp.ComposeResources.Res
 import ru.presaler.splash.imp.presentation.viewmodel.SplashScreenViewModel
+import ru.presaler.splash.imp.res.strings.getErrorConnection
+import ru.presaler.splash.imp.res.strings.getSplashAuthorizationButtonText
+import ru.presaler.splash.imp.res.strings.getSplashCheckConnectionText
+import ru.presaler.splash.imp.res.strings.getSplashDescription
+import ru.presaler.splash.imp.res.strings.getSplashRegistrationButtonText
+import ru.presaler.splash.imp.res.strings.getSplashTitle
 import ru.presaler.ui.components.AppTitle
 import ru.presaler.ui.components.ButtonAuth
-import ru.presaler.ui.components.SplashDescription
+import ru.presaler.ui.components.ConnectionStatusLabel
+import ru.presaler.ui.components.SplashDescriptionText
+import ru.presaler.ui.components.TransparentButton
 
 @Composable
 fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateToHome: () -> Unit, onNavigationAuthorization: () -> Unit) {
 
     val state by viewModel.collectAsState()
+    val composition by rememberLottieComposition {
+        LottieCompositionSpec.JsonString(
+            Res.readBytes("files/splash_animation.json").decodeToString()
+        )
+    }
 
     viewModel.collectSideEffect { sideEffect ->
         when (sideEffect) {
@@ -42,11 +55,34 @@ fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateT
         }
 
         SplashScreenViewState.Loading-> {
-            val composition by rememberLottieComposition {
-                LottieCompositionSpec.JsonString(
-                    Res.readBytes("files/splash_animation.json").decodeToString()
+                        Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally)
+            {
+                Spacer(modifier = Modifier.weight(1f))
+
+                Image(
+                    modifier = Modifier
+                        .padding(top = 48.dp)
+                        .fillMaxWidth(),
+                    contentScale = ContentScale.FillWidth,
+                    painter = rememberLottiePainter(
+                        composition = composition,
+                        iterations = Compottie.IterateForever),
+                    contentDescription = ""
                 )
+
+                AppTitle(getSplashTitle())
+                SplashDescriptionText(getSplashDescription())
+
+                Spacer(modifier = Modifier.weight(1f))
+                //ConnectionStatus() //Проверка статуса
+                ConnectionStatusLabel(getSplashCheckConnectionText())
             }
+        }
+
+        SplashScreenViewState.ConnectionNotFound -> {
             Column(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -65,12 +101,50 @@ fun SplashScreen(viewModel: SplashScreenViewModel = koinViewModel(), onNavigateT
                     contentDescription = ""
                 )
 
-                AppTitle()
-                SplashDescription()
+                AppTitle(getSplashTitle())
+                SplashDescriptionText(getSplashDescription())
 
                 Spacer(modifier = Modifier.weight(1f))
                 //ConnectionStatus() //Проверка статуса
-                ButtonAuth(modifier = Modifier, onClick = {})
+                ConnectionStatusLabel(getErrorConnection())
+            }
+
+        }
+
+        SplashScreenViewState.Unauthorized -> {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally)
+            {
+                Spacer(modifier = Modifier.weight(1f))
+
+                Image(
+                    modifier = Modifier
+                        .padding(top = 48.dp)
+                        .fillMaxWidth(),
+                    contentScale = ContentScale.FillWidth,
+                    painter = rememberLottiePainter(
+                        composition = composition,
+                        iterations = Compottie.IterateForever),
+                    contentDescription = ""
+                )
+
+                AppTitle(getSplashTitle())
+                SplashDescriptionText(getSplashDescription())
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                    ButtonAuth(
+                        onClick = {},
+                        modifier = Modifier,
+                        text = getSplashAuthorizationButtonText()
+                    )
+                    TransparentButton(
+                        text = getSplashRegistrationButtonText(),
+                        modifier = Modifier,
+                        onClick = {})
+
             }
         }
     }
