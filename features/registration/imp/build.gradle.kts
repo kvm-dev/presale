@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
     alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
 }
 
 kotlin {
@@ -64,17 +66,33 @@ kotlin {
                 implementation(projects.features.registration.api)
                 //base libs
                 implementation(libs.kotlin.stdlib)
-                //coroutines
-                implementation(libs.kotlinx.coroutines.core)
-                //network
-                implementation(projects.base.network)
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(libs.androidx.lifecycle.viewmodelCompose)
+                implementation(libs.androidx.lifecycle.runtimeCompose)
+                //encrypted storage
+                implementation(projects.base.storage)
                 //utils
                 implementation(projects.base.utils)
+                //ui
+                implementation(projects.base.ui)
+                //lottie
+                implementation(libs.compottie)
+                //viewmodel
+                implementation(projects.base.viewmodel)
                 //di
                 implementation(libs.koin.core)
+                implementation(libs.koin.compose)
+                implementation(libs.koin.compose.viewmodel)
                 //features
-                implementation(projects.base.storage)
-
+                implementation(projects.features.authorization.api)
+                implementation(projects.features.networkconnection.api)
+                implementation(projects.features.profile.api)
+                implementation(libs.kotlin.stdlib)
             }
         }
 
